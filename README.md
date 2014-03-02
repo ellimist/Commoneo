@@ -3,6 +3,9 @@
 ###The Plug and Play web app that helps you store ideas.
 <hr>
 
+#####Live demo
+Check the live demo: [http://commoneo.algorithm.dk](http://commoneo.algorithm.dk)
+
 #####Screenshots
 ![Commoneo picture](http://i60.tinypic.com/5y99uf.png)
 
