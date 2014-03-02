@@ -12,7 +12,9 @@ Commoneo is a very simple PHP based script that does only one thing: it stores y
 It is fully responsive and it adapts itself depending on the device you're using (you don't want to loose that cool idea you got in the bus, do you?).
 
 #####Security
-There is no security implementation whatsoever. If you make it public, it can be accessed by anyone. Add your own login handler or **htaccess** configuration to keep it safe.
+There is no security implementation whatsoever. If you make it public, it can be accessed by anyone.
+<br>
+Add your own login handler or **htaccess** configuration to keep it safe.
 <br>
 The data is saved in a random file everytime, although it makes no difference as long as you keep the app itself public. **Got a proper solution** in mind on how to handle security? I'll be waiting for your **pull requests**.
 
