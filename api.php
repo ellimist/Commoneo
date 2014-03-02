@@ -19,7 +19,9 @@ if(isset($_POST['action']) && $_POST['action'] == "store" && isset($_POST['data'
     $data = $_POST['data'];
     $ideas = json_decode($data);
     $file = findCurrentFile();
-    unlink("./data/$file");
+    if($file != null){
+        unlink("./data/$file");
+    }
     $filename = md5(uniqid(rand(), true));
     file_put_contents("./data/$filename", serialize($ideas));
     exit;
