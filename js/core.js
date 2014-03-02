@@ -3,8 +3,30 @@ var ideas = [];
 
 //main
 $(function(){
+    // extend String prototype
+    if(!String.linkify) {
+        String.prototype.linkify = function() {
+
+            // http://, https://, ftp://
+            var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
+
+            // www. sans http:// or https://
+            var pseudoUrlPattern = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+
+            // Email addresses
+            var emailAddressPattern = /\w+@[a-zA-Z_]+?(?:\.[a-zA-Z]{2,6})+/gim;
+
+            return this
+                .replace(urlPattern, '<a href="$&">$&</a>')
+                .replace(pseudoUrlPattern, '$1<a href="http://$2">$2</a>')
+                .replace(emailAddressPattern, '<a href="mailto:$&">$&</a>');
+        };
+    }
+    // load the stuff
     loadFromServer();
 });
+
+// make the site responsive
 if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
     $('section :input').val('').fancyInput()[0].focus();
     $("body").addClass("fancy");
@@ -36,7 +58,8 @@ function redrawIdeas(){
     $("#ideas").find("li").remove();
     ideas.reverse().forEach(function(e, index){
         var element = $("<li><p/></li>");
-        element.find("p").text(e);
+        e = e.linkify();
+        element.find("p").html(e);
         var deleteButton = $("<button/>");
         deleteButton.text("delete");
         deleteButton.addClass("delete-button");
@@ -62,3 +85,4 @@ function loadFromServer(){
         redrawIdeas();
     });
 }
+
