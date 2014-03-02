@@ -1,7 +1,6 @@
 #Commoneo
 
-###The Plug and Play web app that help you store ideas.
-<br>
+###The Plug and Play web app that helps you store ideas.
 <hr>
 
 #####Screenshots
